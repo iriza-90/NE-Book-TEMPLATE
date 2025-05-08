@@ -7,7 +7,7 @@ const swaggerUi = require('swagger-ui-express');
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:8082', // frontend URL
+  origin: 'http://localhost:8081', // frontend URL
   credentials: true
 }));
 

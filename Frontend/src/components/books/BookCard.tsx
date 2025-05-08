@@ -21,19 +21,19 @@ const BookCard = ({ book, onEdit, onDelete }: BookCardProps) => {
         <div className="grid gap-1">
           <div className="flex justify-between">
             <span className="text-sm font-medium">Author:</span>
-            <span className="text-sm">{book.author}</span>
+            <span className="text-sm">{book.Author}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-sm font-medium">Publisher:</span>
-            <span className="text-sm">{book.publisher}</span>
+            <span className="text-sm">{book.Publisher}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-sm font-medium">Subject:</span>
-            <span className="text-sm">{book.subject}</span>
+            <span className="text-sm">{book.Subject}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-sm font-medium">Year:</span>
-            <span className="text-sm">{book.publicationYear}</span>
+            <span className="text-sm">{book.Publication_year}</span>
           </div>
         </div>
       </CardContent>

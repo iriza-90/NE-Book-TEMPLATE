@@ -27,7 +27,7 @@ exports.signup = async (req, res) => {
     });
 
     const emailContent = `
-      <p>Hey ${firstName},</p>
+      <p>Hey ${firstname},</p>
       <p>Your verification code is:</p>
       <h2 style="color: #4F46E5;">${verificationCode}</h2>
       <p>Do not share this code with anyone.</p>

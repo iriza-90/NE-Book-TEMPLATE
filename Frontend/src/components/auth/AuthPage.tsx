@@ -10,7 +10,7 @@ const AuthPage = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-book-accent to-background p-4">
       <div className="w-full max-w-md mb-8">
         <h1 className="text-4xl font-bold text-center text-book-secondary">Bookish</h1>
-        <p className="text-center text-muted-foreground mt-2">Your Personal Book Management System</p>
+        <p className="text-center text-muted-foreground mt-2">A legit Library 😉</p>
       </div>
       
       {isLogin ? (

@@ -1,66 +1,67 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { LogOut, Book } from 'lucide-react';
+import { LogOut, Book, Building, User } from 'lucide-react';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
+  title: string;
 }
 
-const DashboardLayout = ({ children }: DashboardLayoutProps) => {
+const DashboardLayout = ({ children, title}: DashboardLayoutProps) => {
   const { user, logout } = useAuth();
+  const navigate = useNavigate()
   
-  const getInitials = (firstname: string) => {
-    return firstname
-      // .split(' ')
-      // .map((n) => n[0])
-      // .join('')
-      // .toUpperCase();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center">
-            <Book className="h-6 w-6 text-book-primary mr-2" />
-            <h1 className="text-xl font-bold text-book-primary">Bookish</h1>
-          </div>
-          
-          <div className="flex items-center space-x-4">
-            {user && (
-              <>
-                <div className="hidden md:flex flex-col items-end">
-                  <span className="font-medium">{user.firstname}</span>
-                  <span className="text-sm text-muted-foreground">{user.email}</span>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white shadow-sm">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 justify-between items-center">
+            <div className="flex items-center space-x-3">
+              <div className="flex items-center justify-center bg-primary h-10 w-10 rounded-md text-white">
+                <Building className="h-6 w-6" />
+              </div>
+              <h1 className="text-xl font-semibold text-gray-900">Bookish ~ A Legit Library 😉</h1>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center text-white">
+                  <User className="h-5 w-5" />
                 </div>
-                <Avatar>
-                  <AvatarFallback className="bg-book-primary text-white">
-                    {getInitials(user.firstname)}
-                  </AvatarFallback>
-                </Avatar>
-                <Button variant="ghost" size="icon" onClick={logout}>
-                  <LogOut className="h-5 w-5" />
-                </Button>
-              </>
-            )}
+                <span className="text-sm font-medium text-gray-700">{user?.firstname}</span>
+              </div>
+              <button 
+                onClick={handleLogout}
+                className="inline-flex items-center rounded-md border border-transparent bg-red-100 px-3 py-2 text-sm font-medium leading-4 text-red-700 hover:bg-red-200"
+              >
+                <LogOut className="h-4 w-4 mr-2" />
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </header>
-      
-      <main className="flex-grow container mx-auto px-4 py-8">
-        {children}
-      </main>
-      
-      <footer className="border-t py-4">
-        <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Bookish - Book Management System
+
+      {/* Main Content */}
+      <main>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+          <h1 className="text-2xl font-semibold text-gray-900 mb-6">{title}</h1>
+          {children}
         </div>
-      </footer>
+      </main>
     </div>
   );
 };
 
 export default DashboardLayout;
+

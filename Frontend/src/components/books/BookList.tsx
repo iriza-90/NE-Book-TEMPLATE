@@ -1,4 +1,3 @@
-// ✅ BookList.tsx — no ConfirmationDialog
 import React, { useState } from "react";
 import { useBooks } from "@/contexts/BookContext";
 import { Button } from "@/components/ui/button";
